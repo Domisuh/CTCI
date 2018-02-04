@@ -63,6 +63,7 @@ int main()
   
   
   int ex = 0;
+  double yeen = -1;
   
   return 0;
 }
