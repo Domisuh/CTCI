@@ -20,22 +20,22 @@ struct bstNode {
 };
  
 /* A function that constructs Balanced Binary Search Tree from a sorted array */
-bstNode *sortedArrayToBST(int arr[], int start, int end)
+bstNode *sortedArrayToBST(vector<int> vec, int start, int end)
 {
   /* Base Case */
   if (start > end) return NULL;
 
   /* Get the middle element and make it root */
   int mid = (start + end)/2;
-  bstNode *root = new bstNode(arr[mid]);
+  bstNode *root = new bstNode(vec[mid]);
  
   /* Recursively construct the left subtree and make it
      left child of root */
-  root->left =  sortedArrayToBST(arr, start, mid-1);
+  root->left =  sortedArrayToBST(vec, start, mid-1);
  
   /* Recursively construct the right subtree and make it
      right child of root */
-  root->right = sortedArrayToBST(arr, mid+1, end);
+  root->right = sortedArrayToBST(vec, mid+1, end);
   
   return root;
 };
@@ -53,11 +53,10 @@ void preOrder(struct bstNode* node)
 /* Driver program to test above functions */
 int main()
 {
-  int arr[] = {3, 8, 12, 13, 18, 21, 26};
-  int n = sizeof(arr)/sizeof(arr[0]);
+  vector<int> vec = {3, 8, 12, 13, 18, 21, 26};
  
   /* Convert List to BST */
-  bstNode *root = sortedArrayToBST(arr, 0, n-1);
+  bstNode *root = sortedArrayToBST(vec, 0, vec.size()-1);
   cout << "n PreOrder Traversal of constructed BST ";
   preOrder(root);
   cout << endl;
